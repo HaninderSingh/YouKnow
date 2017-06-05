@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Converter="clr-namespace:YouKnow.Converters"
+             x:Class="YouKnow.Components.WantedCard">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Converter:PhotoUrlConverter x:Key="_UrlConverters"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <Frame Padding="10" BackgroundColor="White">
+        <StackLayout VerticalOptions="StartAndExpand">
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".3*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".2*"/>
+                <RowDefinition Height=".1*"/>
+            </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="{Binding Media,Converter={StaticResource _UrlConverters}" Aspect="AspectFill" HeightRequest="200" WidthRequest="300" HorizontalOptions="FillAndExpand"></Image>
+            <Label Grid.Row="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="18" TextColor="DarkMagenta" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" ></Label>
+            <Label Grid.Row="2" Text="{Binding MissingType}" FontSize="14" TextColor="Black" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" ></Label>
+            <Label Grid.Row="3" Text="{Binding Description}" FontSize="14" TextColor="Black" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" ></Label>
+            <Label Grid.Row="4" Text="{Binding Contact}" FontSize="14" TextColor="CornflowerBlue" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" ></Label>
+        </Grid>
+        </StackLayout>
+    </Frame>
+</ContentView>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:YouKnow.Components;assembly=YouKnow"
+             x:Class="YouKnow.Views.GenericViews.BloodPage" Title="YouKnow" >
+<StackLayout>
+        <ActivityIndicator  IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="#365B79"></ActivityIndicator>
+        <ListView BackgroundColor="Transparent"  x:Name="BloodListView" CachingStrategy="RecycleElement" SeparatorVisibility="None"   SeparatorColor="Transparent"  RowHeight="300" >
+        <ListView.ItemTemplate >
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout>
+                        <components:BloodCard SendMaps="BloodCard_SendMaps"></components:BloodCard>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    </StackLayout>
+</ContentPage>

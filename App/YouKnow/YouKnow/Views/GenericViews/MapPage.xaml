@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="YouKnow.Views.GenericViews.MapPage" Title="YouKnow">
+    <StackLayout>
+    <StackLayout VerticalOptions="StartAndExpand" Padding="30">
+        <maps:Map  WidthRequest="350" HeightRequest="400"
+            x:Name="MyMap"
+            IsShowingUser="true"
+            MapType="Street"
+                      />
+
+    </StackLayout>
+    </StackLayout>
+</ContentPage>

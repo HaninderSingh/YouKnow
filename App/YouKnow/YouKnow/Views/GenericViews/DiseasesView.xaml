@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:components="clr-namespace:YouKnow.Components;assembly=YouKnow"
+             x:Class="YouKnow.Views.GenericViews.DiseasesView" Title="YouKnow">
+    <StackLayout>
+        <ActivityIndicator  IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="#365B79"></ActivityIndicator>
+    <ListView BackgroundColor="Transparent"  x:Name="dListView" CachingStrategy="RecycleElement" SeparatorVisibility="None"  SeparatorColor="Transparent"  RowHeight="350" >
+        <ListView.ItemTemplate >
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout>
+                            <components:DiseasesCard SendMaps="DiseasesCard_SendMaps"></components:DiseasesCard>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    </StackLayout>
+</ContentPage>

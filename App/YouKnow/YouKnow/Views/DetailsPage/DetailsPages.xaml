@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:Converter="clr-namespace:YouKnow.Converters"
+             x:Class="YouKnow.Views.DetailsPage.DetailsPages">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Converter:PhotoUrlConverter x:Key="_UrlConverters"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
+    <ScrollView>
+        <StackLayout>
+        <StackLayout Padding="10" VerticalOptions="FillAndExpand">
+            <ActivityIndicator IsVisible="True" BindingContext="{x:Reference Name=image}" IsRunning="{Binding  Path=IsLoading}" Color="#365B79"></ActivityIndicator>
+            <Image x:Name="image" Grid.Row="1" Aspect="AspectFit" HeightRequest="80" WidthRequest="80" Source="{Binding DetailModel.Media,Converter={StaticResource _UrlConverters}}"/>
+            <Label Text="{Binding DetailModel.Name}" FontAttributes="Bold" FontSize="18" TextColor="DarkMagenta" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" ></Label>
+            <Label Text="{Binding DetailModel.Description}" FontSize="14" TextColor="Black" HorizontalOptions="CenterAndExpand" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" ></Label>
+            <Label Text="{Binding DetailModel.Contact}" FontSize="14" TextColor="Black" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" ></Label>
+        </StackLayout>
+        <StackLayout VerticalOptions="EndAndExpand">
+            <Button Text="Buy Package" HorizontalOptions="CenterAndExpand" TextColor="DarkMagenta" />
+        </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

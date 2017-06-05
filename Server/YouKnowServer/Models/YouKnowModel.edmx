@@ -1,0 +1,3398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="YouKnowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsAuthorized" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CityId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Attire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReligionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AttireTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AttireId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Blood">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Media" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="OrgUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsFulfilled" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="WantedFrom" Type="geography" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="100" />
+          <Property Name="BloodGroup" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StateId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Congestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CongestionTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Media" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="OrgUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsLifted" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Location" Type="geography" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="100" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CongestionTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CongestionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CongestionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Custom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReligionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CustomTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CustomId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+          <Property Name="CanVolunteer" Type="bit" Nullable="false" />
+          <Property Name="BloodGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="CanDonate" Type="bit" Nullable="false" />
+          <Property Name="EmergencyContact" Type="bit" />
+          <Property Name="LastLocation" Type="geography" />
+        </EntityType>
+        <EntityType Name="Disaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DisasterTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Media" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="OrgUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsArchived" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="MissingFrom" Type="geography" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DisasterTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DisasterId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DisasterType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Radius" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disease">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Media" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="OrgUserId" Type="uniqueidentifier" />
+          <Property Name="FirstIdentifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="GroundZero" Type="geography" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="100" />
+          <Property Name="KeyFacts" Type="nvarchar(max)" />
+          <Property Name="Outbreaks" Type="nvarchar(max)" />
+          <Property Name="Transmission" Type="nvarchar(max)" />
+          <Property Name="Symptoms" Type="nvarchar(max)" />
+          <Property Name="Diagnosis" Type="nvarchar(max)" />
+          <Property Name="Treatment" Type="nvarchar(max)" />
+          <Property Name="Prevention" Type="nvarchar(max)" />
+          <Property Name="ConfirmedCases" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DiseaseTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DiseaseId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Festival">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReligionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FestivalTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FestivalId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Geo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Location" Type="geography" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Media" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="OrgUserId" Type="uniqueidentifier" />
+          <Property Name="HasReturned" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Location" Type="geography" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="HospitalTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HospitalId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Missing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MissingTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Media" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="OrgUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HasReturned" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="MissingFrom" Type="geography" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MissingTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MissingId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MissingType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Org">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrgTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CountryId" Type="uniqueidentifier" />
+          <Property Name="StateId" Type="uniqueidentifier" />
+          <Property Name="CityId" Type="uniqueidentifier" />
+          <Property Name="AreaId" Type="uniqueidentifier" />
+          <Property Name="Jurisidiction" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrgType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OrgUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AppUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrgId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsAuthorized" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Religion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="God" Type="nvarchar" MaxLength="200" />
+          <Property Name="Greetings" Type="nvarchar" MaxLength="50" />
+          <Property Name="Followers" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ReligionTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReligionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReportType" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Media" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DeviceId" Type="uniqueidentifier" />
+          <Property Name="HasReturned" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="MissingFrom" Type="geography" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ReportType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sensitivity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReligionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SensitivityTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SensitivityId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CountryId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Capital" Type="nvarchar" MaxLength="100" />
+          <Property Name="Languages" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImportantCities" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SurvivalGuide">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DisasterTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TagType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TreatingHospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DiseaseId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HospitalId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Wanted">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Media" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="OrgUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsArrested" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="WantedFrom" Type="geography" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WantedTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WantedId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Area_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attire_Religion">
+          <End Role="Religion" Type="Self.Religion" Multiplicity="1" />
+          <End Role="Attire" Type="Self.Attire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Attire">
+              <PropertyRef Name="ReligionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AttireTag_Attire">
+          <End Role="Attire" Type="Self.Attire" Multiplicity="1" />
+          <End Role="AttireTag" Type="Self.AttireTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AttireTag">
+              <PropertyRef Name="AttireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AttireTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="AttireTag" Type="Self.AttireTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AttireTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blood_OrgUser">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="Blood" Type="Self.Blood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Blood">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_State">
+          <End Role="State" Type="Self.State" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Congestion_CongestionType">
+          <End Role="CongestionType" Type="Self.CongestionType" Multiplicity="1" />
+          <End Role="Congestion" Type="Self.Congestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongestionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Congestion">
+              <PropertyRef Name="CongestionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Congestion_OrgUser">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="Congestion" Type="Self.Congestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Congestion">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CongestionTag_Congestion">
+          <End Role="Congestion" Type="Self.Congestion" Multiplicity="1" />
+          <End Role="CongestionTag" Type="Self.CongestionTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Congestion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CongestionTag">
+              <PropertyRef Name="CongestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CongestionTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="CongestionTag" Type="Self.CongestionTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CongestionTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Custom_Religion">
+          <End Role="Religion" Type="Self.Religion" Multiplicity="1" />
+          <End Role="Custom" Type="Self.Custom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Custom">
+              <PropertyRef Name="ReligionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomTag_Custom">
+          <End Role="Custom" Type="Self.Custom" Multiplicity="1" />
+          <End Role="CustomTag" Type="Self.CustomTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Custom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomTag">
+              <PropertyRef Name="CustomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="CustomTag" Type="Self.CustomTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disaster_DisasterType">
+          <End Role="DisasterType" Type="Self.DisasterType" Multiplicity="1" />
+          <End Role="Disaster" Type="Self.Disaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DisasterType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Disaster">
+              <PropertyRef Name="DisasterTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disaster_OrgUser">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="Disaster" Type="Self.Disaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Disaster">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DisasterTag_Disaster">
+          <End Role="Disaster" Type="Self.Disaster" Multiplicity="1" />
+          <End Role="DisasterTag" Type="Self.DisasterTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DisasterTag">
+              <PropertyRef Name="DisasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DisasterTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="DisasterTag" Type="Self.DisasterTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DisasterTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disease_OrgUser">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="0..1" />
+          <End Role="Disease" Type="Self.Disease" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Disease">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiseaseTag_Disease">
+          <End Role="Disease" Type="Self.Disease" Multiplicity="1" />
+          <End Role="DiseaseTag" Type="Self.DiseaseTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disease">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DiseaseTag">
+              <PropertyRef Name="DiseaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiseaseTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="DiseaseTag" Type="Self.DiseaseTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DiseaseTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Festival_Religion">
+          <End Role="Religion" Type="Self.Religion" Multiplicity="1" />
+          <End Role="Festival" Type="Self.Festival" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Festival">
+              <PropertyRef Name="ReligionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FestivalTag_Festival">
+          <End Role="Festival" Type="Self.Festival" Multiplicity="1" />
+          <End Role="FestivalTag" Type="Self.FestivalTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Festival">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FestivalTag">
+              <PropertyRef Name="FestivalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FestivalTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="FestivalTag" Type="Self.FestivalTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FestivalTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HospitalTag_Hospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="1" />
+          <End Role="HospitalTag" Type="Self.HospitalTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HospitalTag">
+              <PropertyRef Name="HospitalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HospitalTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="HospitalTag" Type="Self.HospitalTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HospitalTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Missing_MissingType">
+          <End Role="MissingType" Type="Self.MissingType" Multiplicity="1" />
+          <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MissingType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Missing">
+              <PropertyRef Name="MissingTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Missing_OrgUser">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Missing">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MissingTag_Missing">
+          <End Role="Missing" Type="Self.Missing" Multiplicity="1" />
+          <End Role="MissingTag" Type="Self.MissingTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Missing">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MissingTag">
+              <PropertyRef Name="MissingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MissingTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="MissingTag" Type="Self.MissingTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MissingTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Org_OrgType">
+          <End Role="OrgType" Type="Self.OrgType" Multiplicity="1" />
+          <End Role="Org" Type="Self.Org" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Org">
+              <PropertyRef Name="OrgTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrgUser_AppUser">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgUser">
+              <PropertyRef Name="AppUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrgUser_Org">
+          <End Role="Org" Type="Self.Org" Multiplicity="1" />
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Org">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgUser">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReligionTag_Religion">
+          <End Role="Religion" Type="Self.Religion" Multiplicity="1" />
+          <End Role="ReligionTag" Type="Self.ReligionTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReligionTag">
+              <PropertyRef Name="ReligionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReligionTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="ReligionTag" Type="Self.ReligionTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReligionTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Report_ReportType">
+          <End Role="ReportType" Type="Self.ReportType" Multiplicity="1" />
+          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="ReportType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sensitivity_Religion">
+          <End Role="Religion" Type="Self.Religion" Multiplicity="1" />
+          <End Role="Sensitivity" Type="Self.Sensitivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sensitivity">
+              <PropertyRef Name="ReligionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensitivityTag_Sensitivity">
+          <End Role="Sensitivity" Type="Self.Sensitivity" Multiplicity="1" />
+          <End Role="SensitivityTag" Type="Self.SensitivityTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensitivity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SensitivityTag">
+              <PropertyRef Name="SensitivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensitivityTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="SensitivityTag" Type="Self.SensitivityTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SensitivityTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SurvivalGuide_DisasterType">
+          <End Role="DisasterType" Type="Self.DisasterType" Multiplicity="1" />
+          <End Role="SurvivalGuide" Type="Self.SurvivalGuide" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DisasterType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SurvivalGuide">
+              <PropertyRef Name="DisasterTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tag_TagType">
+          <End Role="TagType" Type="Self.TagType" Multiplicity="1" />
+          <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tag">
+              <PropertyRef Name="TagTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreatingHospital_Disease">
+          <End Role="Disease" Type="Self.Disease" Multiplicity="1" />
+          <End Role="TreatingHospital" Type="Self.TreatingHospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disease">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TreatingHospital">
+              <PropertyRef Name="DiseaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreatingHospital_Hospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="1" />
+          <End Role="TreatingHospital" Type="Self.TreatingHospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TreatingHospital">
+              <PropertyRef Name="HospitalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wanted_OrgUser">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="Wanted" Type="Self.Wanted" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wanted">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WantedTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="WantedTag" Type="Self.WantedTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WantedTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WantedTag_Wanted">
+          <End Role="Wanted" Type="Self.Wanted" Multiplicity="1" />
+          <End Role="WantedTag" Type="Self.WantedTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wanted">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WantedTag">
+              <PropertyRef Name="WantedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YouKnowModelStoreContainer">
+          <EntitySet Name="AppUser" EntityType="Self.AppUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Attire" EntityType="Self.Attire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AttireTag" EntityType="Self.AttireTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blood" EntityType="Self.Blood" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Congestion" EntityType="Self.Congestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CongestionTag" EntityType="Self.CongestionTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CongestionType" EntityType="Self.CongestionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Custom" EntityType="Self.Custom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomTag" EntityType="Self.CustomTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Device" EntityType="Self.Device" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disaster" EntityType="Self.Disaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisasterTag" EntityType="Self.DisasterTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisasterType" EntityType="Self.DisasterType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disease" EntityType="Self.Disease" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiseaseTag" EntityType="Self.DiseaseTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Festival" EntityType="Self.Festival" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FestivalTag" EntityType="Self.FestivalTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Geo" EntityType="Self.Geo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HospitalTag" EntityType="Self.HospitalTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Missing" EntityType="Self.Missing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MissingTag" EntityType="Self.MissingTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MissingType" EntityType="Self.MissingType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Org" EntityType="Self.Org" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrgType" EntityType="Self.OrgType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrgUser" EntityType="Self.OrgUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Religion" EntityType="Self.Religion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReligionTag" EntityType="Self.ReligionTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportType" EntityType="Self.ReportType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sensitivity" EntityType="Self.Sensitivity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SensitivityTag" EntityType="Self.SensitivityTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SurvivalGuide" EntityType="Self.SurvivalGuide" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TagType" EntityType="Self.TagType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TreatingHospital" EntityType="Self.TreatingHospital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wanted" EntityType="Self.Wanted" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WantedTag" EntityType="Self.WantedTag" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Area_City" Association="Self.FK_Area_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Area" EntitySet="Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attire_Religion" Association="Self.FK_Attire_Religion">
+            <End Role="Religion" EntitySet="Religion" />
+            <End Role="Attire" EntitySet="Attire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AttireTag_Attire" Association="Self.FK_AttireTag_Attire">
+            <End Role="Attire" EntitySet="Attire" />
+            <End Role="AttireTag" EntitySet="AttireTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AttireTag_Tag" Association="Self.FK_AttireTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="AttireTag" EntitySet="AttireTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blood_OrgUser" Association="Self.FK_Blood_OrgUser">
+            <End Role="OrgUser" EntitySet="OrgUser" />
+            <End Role="Blood" EntitySet="Blood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Congestion_CongestionType" Association="Self.FK_Congestion_CongestionType">
+            <End Role="CongestionType" EntitySet="CongestionType" />
+            <End Role="Congestion" EntitySet="Congestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Congestion_OrgUser" Association="Self.FK_Congestion_OrgUser">
+            <End Role="OrgUser" EntitySet="OrgUser" />
+            <End Role="Congestion" EntitySet="Congestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CongestionTag_Congestion" Association="Self.FK_CongestionTag_Congestion">
+            <End Role="Congestion" EntitySet="Congestion" />
+            <End Role="CongestionTag" EntitySet="CongestionTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CongestionTag_Tag" Association="Self.FK_CongestionTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="CongestionTag" EntitySet="CongestionTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Custom_Religion" Association="Self.FK_Custom_Religion">
+            <End Role="Religion" EntitySet="Religion" />
+            <End Role="Custom" EntitySet="Custom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomTag_Custom" Association="Self.FK_CustomTag_Custom">
+            <End Role="Custom" EntitySet="Custom" />
+            <End Role="CustomTag" EntitySet="CustomTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomTag_Tag" Association="Self.FK_CustomTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="CustomTag" EntitySet="CustomTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disaster_DisasterType" Association="Self.FK_Disaster_DisasterType">
+            <End Role="DisasterType" EntitySet="DisasterType" />
+            <End Role="Disaster" EntitySet="Disaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disaster_OrgUser" Association="Self.FK_Disaster_OrgUser">
+            <End Role="OrgUser" EntitySet="OrgUser" />
+            <End Role="Disaster" EntitySet="Disaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DisasterTag_Disaster" Association="Self.FK_DisasterTag_Disaster">
+            <End Role="Disaster" EntitySet="Disaster" />
+            <End Role="DisasterTag" EntitySet="DisasterTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DisasterTag_Tag" Association="Self.FK_DisasterTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="DisasterTag" EntitySet="DisasterTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disease_OrgUser" Association="Self.FK_Disease_OrgUser">
+            <End Role="OrgUser" EntitySet="OrgUser" />
+            <End Role="Disease" EntitySet="Disease" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiseaseTag_Disease" Association="Self.FK_DiseaseTag_Disease">
+            <End Role="Disease" EntitySet="Disease" />
+            <End Role="DiseaseTag" EntitySet="DiseaseTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiseaseTag_Tag" Association="Self.FK_DiseaseTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="DiseaseTag" EntitySet="DiseaseTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Festival_Religion" Association="Self.FK_Festival_Religion">
+            <End Role="Religion" EntitySet="Religion" />
+            <End Role="Festival" EntitySet="Festival" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FestivalTag_Festival" Association="Self.FK_FestivalTag_Festival">
+            <End Role="Festival" EntitySet="Festival" />
+            <End Role="FestivalTag" EntitySet="FestivalTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FestivalTag_Tag" Association="Self.FK_FestivalTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="FestivalTag" EntitySet="FestivalTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HospitalTag_Hospital" Association="Self.FK_HospitalTag_Hospital">
+            <End Role="Hospital" EntitySet="Hospital" />
+            <End Role="HospitalTag" EntitySet="HospitalTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HospitalTag_Tag" Association="Self.FK_HospitalTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="HospitalTag" EntitySet="HospitalTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Missing_MissingType" Association="Self.FK_Missing_MissingType">
+            <End Role="MissingType" EntitySet="MissingType" />
+            <End Role="Missing" EntitySet="Missing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Missing_OrgUser" Association="Self.FK_Missing_OrgUser">
+            <End Role="OrgUser" EntitySet="OrgUser" />
+            <End Role="Missing" EntitySet="Missing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MissingTag_Missing" Association="Self.FK_MissingTag_Missing">
+            <End Role="Missing" EntitySet="Missing" />
+            <End Role="MissingTag" EntitySet="MissingTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MissingTag_Tag" Association="Self.FK_MissingTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="MissingTag" EntitySet="MissingTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Org_OrgType" Association="Self.FK_Org_OrgType">
+            <End Role="OrgType" EntitySet="OrgType" />
+            <End Role="Org" EntitySet="Org" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrgUser_AppUser" Association="Self.FK_OrgUser_AppUser">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="OrgUser" EntitySet="OrgUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrgUser_Org" Association="Self.FK_OrgUser_Org">
+            <End Role="Org" EntitySet="Org" />
+            <End Role="OrgUser" EntitySet="OrgUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReligionTag_Religion" Association="Self.FK_ReligionTag_Religion">
+            <End Role="Religion" EntitySet="Religion" />
+            <End Role="ReligionTag" EntitySet="ReligionTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReligionTag_Tag" Association="Self.FK_ReligionTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="ReligionTag" EntitySet="ReligionTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_ReportType" Association="Self.FK_Report_ReportType">
+            <End Role="ReportType" EntitySet="ReportType" />
+            <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sensitivity_Religion" Association="Self.FK_Sensitivity_Religion">
+            <End Role="Religion" EntitySet="Religion" />
+            <End Role="Sensitivity" EntitySet="Sensitivity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensitivityTag_Sensitivity" Association="Self.FK_SensitivityTag_Sensitivity">
+            <End Role="Sensitivity" EntitySet="Sensitivity" />
+            <End Role="SensitivityTag" EntitySet="SensitivityTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensitivityTag_Tag" Association="Self.FK_SensitivityTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="SensitivityTag" EntitySet="SensitivityTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SurvivalGuide_DisasterType" Association="Self.FK_SurvivalGuide_DisasterType">
+            <End Role="DisasterType" EntitySet="DisasterType" />
+            <End Role="SurvivalGuide" EntitySet="SurvivalGuide" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tag_TagType" Association="Self.FK_Tag_TagType">
+            <End Role="TagType" EntitySet="TagType" />
+            <End Role="Tag" EntitySet="Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreatingHospital_Disease" Association="Self.FK_TreatingHospital_Disease">
+            <End Role="Disease" EntitySet="Disease" />
+            <End Role="TreatingHospital" EntitySet="TreatingHospital" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreatingHospital_Hospital" Association="Self.FK_TreatingHospital_Hospital">
+            <End Role="Hospital" EntitySet="Hospital" />
+            <End Role="TreatingHospital" EntitySet="TreatingHospital" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wanted_OrgUser" Association="Self.FK_Wanted_OrgUser">
+            <End Role="OrgUser" EntitySet="OrgUser" />
+            <End Role="Wanted" EntitySet="Wanted" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WantedTag_Tag" Association="Self.FK_WantedTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="WantedTag" EntitySet="WantedTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WantedTag_Wanted" Association="Self.FK_WantedTag_Wanted">
+            <End Role="Wanted" EntitySet="Wanted" />
+            <End Role="WantedTag" EntitySet="WantedTag" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YouKnowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AppUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Designation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsAuthorized" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="OrgUsers" Relationship="Self.FK_OrgUser_AppUser" FromRole="AppUser" ToRole="OrgUser" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CityId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="City" Relationship="Self.FK_Area_City" FromRole="Area" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Attire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ReligionId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Religion" Relationship="Self.FK_Attire_Religion" FromRole="Attire" ToRole="Religion" />
+          <NavigationProperty Name="AttireTags" Relationship="Self.FK_AttireTag_Attire" FromRole="Attire" ToRole="AttireTag" />
+        </EntityType>
+        <EntityType Name="AttireTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="AttireId" Type="Guid" Nullable="false" />
+          <Property Name="TagId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Attire" Relationship="Self.FK_AttireTag_Attire" FromRole="AttireTag" ToRole="Attire" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_AttireTag_Tag" FromRole="AttireTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Blood">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Media" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrgUserId" Type="Guid" Nullable="false" />
+          <Property Name="IsFulfilled" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="WantedFrom" Type="Geography" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BloodGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OrgUser" Relationship="Self.FK_Blood_OrgUser" FromRole="Blood" ToRole="OrgUser" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="StateId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Areas" Relationship="Self.FK_Area_City" FromRole="City" ToRole="Area" />
+          <NavigationProperty Name="State" Relationship="Self.FK_City_State" FromRole="City" ToRole="State" />
+        </EntityType>
+        <EntityType Name="Congestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CongestionTypeId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Media" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrgUserId" Type="Guid" Nullable="false" />
+          <Property Name="IsLifted" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Location" Type="Geography" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CongestionType" Relationship="Self.FK_Congestion_CongestionType" FromRole="Congestion" ToRole="CongestionType" />
+          <NavigationProperty Name="OrgUser" Relationship="Self.FK_Congestion_OrgUser" FromRole="Congestion" ToRole="OrgUser" />
+          <NavigationProperty Name="CongestionTags" Relationship="Self.FK_CongestionTag_Congestion" FromRole="Congestion" ToRole="CongestionTag" />
+        </EntityType>
+        <EntityType Name="CongestionTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CongestionId" Type="Guid" Nullable="false" />
+          <Property Name="TagId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Congestion" Relationship="Self.FK_CongestionTag_Congestion" FromRole="CongestionTag" ToRole="Congestion" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_CongestionTag_Tag" FromRole="CongestionTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="CongestionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Congestions" Relationship="Self.FK_Congestion_CongestionType" FromRole="CongestionType" ToRole="Congestion" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="States" Relationship="Self.FK_State_Country" FromRole="Country" ToRole="State" />
+        </EntityType>
+        <EntityType Name="Custom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ReligionId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Religion" Relationship="Self.FK_Custom_Religion" FromRole="Custom" ToRole="Religion" />
+          <NavigationProperty Name="CustomTags" Relationship="Self.FK_CustomTag_Custom" FromRole="Custom" ToRole="CustomTag" />
+        </EntityType>
+        <EntityType Name="CustomTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CustomId" Type="Guid" Nullable="false" />
+          <Property Name="TagId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Custom" Relationship="Self.FK_CustomTag_Custom" FromRole="CustomTag" ToRole="Custom" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_CustomTag_Tag" FromRole="CustomTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CanVolunteer" Type="Boolean" Nullable="false" />
+          <Property Name="BloodGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CanDonate" Type="Boolean" Nullable="false" />
+          <Property Name="EmergencyContact" Type="Boolean" />
+          <Property Name="LastLocation" Type="Geography" />
+        </EntityType>
+        <EntityType Name="Disaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DisasterTypeId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Media" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrgUserId" Type="Guid" Nullable="false" />
+          <Property Name="IsArchived" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="MissingFrom" Type="Geography" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DisasterType" Relationship="Self.FK_Disaster_DisasterType" FromRole="Disaster" ToRole="DisasterType" />
+          <NavigationProperty Name="OrgUser" Relationship="Self.FK_Disaster_OrgUser" FromRole="Disaster" ToRole="OrgUser" />
+          <NavigationProperty Name="DisasterTags" Relationship="Self.FK_DisasterTag_Disaster" FromRole="Disaster" ToRole="DisasterTag" />
+        </EntityType>
+        <EntityType Name="DisasterTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DisasterId" Type="Guid" Nullable="false" />
+          <Property Name="TagId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Disaster" Relationship="Self.FK_DisasterTag_Disaster" FromRole="DisasterTag" ToRole="Disaster" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_DisasterTag_Tag" FromRole="DisasterTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="DisasterType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Radius" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Disasters" Relationship="Self.FK_Disaster_DisasterType" FromRole="DisasterType" ToRole="Disaster" />
+          <NavigationProperty Name="SurvivalGuides" Relationship="Self.FK_SurvivalGuide_DisasterType" FromRole="DisasterType" ToRole="SurvivalGuide" />
+        </EntityType>
+        <EntityType Name="Disease">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Media" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrgUserId" Type="Guid" />
+          <Property Name="FirstIdentifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="GroundZero" Type="Geography" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KeyFacts" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Outbreaks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Transmission" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Symptoms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Diagnosis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Treatment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Prevention" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConfirmedCases" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrgUser" Relationship="Self.FK_Disease_OrgUser" FromRole="Disease" ToRole="OrgUser" />
+          <NavigationProperty Name="DiseaseTags" Relationship="Self.FK_DiseaseTag_Disease" FromRole="Disease" ToRole="DiseaseTag" />
+          <NavigationProperty Name="TreatingHospitals" Relationship="Self.FK_TreatingHospital_Disease" FromRole="Disease" ToRole="TreatingHospital" />
+        </EntityType>
+        <EntityType Name="DiseaseTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DiseaseId" Type="Guid" Nullable="false" />
+          <Property Name="TagId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Disease" Relationship="Self.FK_DiseaseTag_Disease" FromRole="DiseaseTag" ToRole="Disease" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_DiseaseTag_Tag" FromRole="DiseaseTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Festival">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ReligionId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Religion" Relationship="Self.FK_Festival_Religion" FromRole="Festival" ToRole="Religion" />
+          <NavigationProperty Name="FestivalTags" Relationship="Self.FK_FestivalTag_Festival" FromRole="Festival" ToRole="FestivalTag" />
+        </EntityType>
+        <EntityType Name="FestivalTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FestivalId" Type="Guid" Nullable="false" />
+          <Property Name="TagId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Festival" Relationship="Self.FK_FestivalTag_Festival" FromRole="FestivalTag" ToRole="Festival" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_FestivalTag_Tag" FromRole="FestivalTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Geo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Location" Type="Geography" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Media" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrgUserId" Type="Guid" />
+          <Property Name="HasReturned" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Location" Type="Geography" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HospitalTags" Relationship="Self.FK_HospitalTag_Hospital" FromRole="Hospital" ToRole="HospitalTag" />
+          <NavigationProperty Name="TreatingHospitals" Relationship="Self.FK_TreatingHospital_Hospital" FromRole="Hospital" ToRole="TreatingHospital" />
+        </EntityType>
+        <EntityType Name="HospitalTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="HospitalId" Type="Guid" Nullable="false" />
+          <Property Name="TagId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Hospital" Relationship="Self.FK_HospitalTag_Hospital" FromRole="HospitalTag" ToRole="Hospital" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_HospitalTag_Tag" FromRole="HospitalTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Missing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MissingTypeId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Media" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrgUserId" Type="Guid" Nullable="false" />
+          <Property Name="HasReturned" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="MissingFrom" Type="Geography" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MissingType" Relationship="Self.FK_Missing_MissingType" FromRole="Missing" ToRole="MissingType" />
+          <NavigationProperty Name="OrgUser" Relationship="Self.FK_Missing_OrgUser" FromRole="Missing" ToRole="OrgUser" />
+          <NavigationProperty Name="MissingTags" Relationship="Self.FK_MissingTag_Missing" FromRole="Missing" ToRole="MissingTag" />
+        </EntityType>
+        <EntityType Name="MissingTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MissingId" Type="Guid" Nullable="false" />
+          <Property Name="TagId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Missing" Relationship="Self.FK_MissingTag_Missing" FromRole="MissingTag" ToRole="Missing" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_MissingTag_Tag" FromRole="MissingTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="MissingType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Missings" Relationship="Self.FK_Missing_MissingType" FromRole="MissingType" ToRole="Missing" />
+        </EntityType>
+        <EntityType Name="Org">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="OrgTypeId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CountryId" Type="Guid" />
+          <Property Name="StateId" Type="Guid" />
+          <Property Name="CityId" Type="Guid" />
+          <Property Name="AreaId" Type="Guid" />
+          <Property Name="Jurisidiction" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrgType" Relationship="Self.FK_Org_OrgType" FromRole="Org" ToRole="OrgType" />
+          <NavigationProperty Name="OrgUsers" Relationship="Self.FK_OrgUser_Org" FromRole="Org" ToRole="OrgUser" />
+        </EntityType>
+        <EntityType Name="OrgType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Orgs" Relationship="Self.FK_Org_OrgType" FromRole="OrgType" ToRole="Org" />
+        </EntityType>
+        <EntityType Name="OrgUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="AppUserId" Type="Guid" Nullable="false" />
+          <Property Name="OrgId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsAuthorized" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AppUser" Relationship="Self.FK_OrgUser_AppUser" FromRole="OrgUser" ToRole="AppUser" />
+          <NavigationProperty Name="Bloods" Relationship="Self.FK_Blood_OrgUser" FromRole="OrgUser" ToRole="Blood" />
+          <NavigationProperty Name="Congestions" Relationship="Self.FK_Congestion_OrgUser" FromRole="OrgUser" ToRole="Congestion" />
+          <NavigationProperty Name="Disasters" Relationship="Self.FK_Disaster_OrgUser" FromRole="OrgUser" ToRole="Disaster" />
+          <NavigationProperty Name="Diseases" Relationship="Self.FK_Disease_OrgUser" FromRole="OrgUser" ToRole="Disease" />
+          <NavigationProperty Name="Missings" Relationship="Self.FK_Missing_OrgUser" FromRole="OrgUser" ToRole="Missing" />
+          <NavigationProperty Name="Org" Relationship="Self.FK_OrgUser_Org" FromRole="OrgUser" ToRole="Org" />
+          <NavigationProperty Name="Wanteds" Relationship="Self.FK_Wanted_OrgUser" FromRole="OrgUser" ToRole="Wanted" />
+        </EntityType>
+        <EntityType Name="Religion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="God" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Greetings" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Followers" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Attires" Relationship="Self.FK_Attire_Religion" FromRole="Religion" ToRole="Attire" />
+          <NavigationProperty Name="Customs" Relationship="Self.FK_Custom_Religion" FromRole="Religion" ToRole="Custom" />
+          <NavigationProperty Name="Festivals" Relationship="Self.FK_Festival_Religion" FromRole="Religion" ToRole="Festival" />
+          <NavigationProperty Name="ReligionTags" Relationship="Self.FK_ReligionTag_Religion" FromRole="Religion" ToRole="ReligionTag" />
+          <NavigationProperty Name="Sensitivities" Relationship="Self.FK_Sensitivity_Religion" FromRole="Religion" ToRole="Sensitivity" />
+        </EntityType>
+        <EntityType Name="ReligionTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ReligionId" Type="Guid" Nullable="false" />
+          <Property Name="TagId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Religion" Relationship="Self.FK_ReligionTag_Religion" FromRole="ReligionTag" ToRole="Religion" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_ReligionTag_Tag" FromRole="ReligionTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ReportType" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Media" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeviceId" Type="Guid" />
+          <Property Name="HasReturned" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="MissingFrom" Type="Geography" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ReportType1" Relationship="Self.FK_Report_ReportType" FromRole="Report" ToRole="ReportType" />
+        </EntityType>
+        <EntityType Name="ReportType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Reports" Relationship="Self.FK_Report_ReportType" FromRole="ReportType" ToRole="Report" />
+        </EntityType>
+        <EntityType Name="Sensitivity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ReligionId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Religion" Relationship="Self.FK_Sensitivity_Religion" FromRole="Sensitivity" ToRole="Religion" />
+          <NavigationProperty Name="SensitivityTags" Relationship="Self.FK_SensitivityTag_Sensitivity" FromRole="Sensitivity" ToRole="SensitivityTag" />
+        </EntityType>
+        <EntityType Name="SensitivityTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SensitivityId" Type="Guid" Nullable="false" />
+          <Property Name="TagId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Sensitivity" Relationship="Self.FK_SensitivityTag_Sensitivity" FromRole="SensitivityTag" ToRole="Sensitivity" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_SensitivityTag_Tag" FromRole="SensitivityTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CountryId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Capital" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Languages" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImportantCities" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_City_State" FromRole="State" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_State_Country" FromRole="State" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="SurvivalGuide">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DisasterTypeId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DisasterType" Relationship="Self.FK_SurvivalGuide_DisasterType" FromRole="SurvivalGuide" ToRole="DisasterType" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="TagTypeId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AttireTags" Relationship="Self.FK_AttireTag_Tag" FromRole="Tag" ToRole="AttireTag" />
+          <NavigationProperty Name="CongestionTags" Relationship="Self.FK_CongestionTag_Tag" FromRole="Tag" ToRole="CongestionTag" />
+          <NavigationProperty Name="CustomTags" Relationship="Self.FK_CustomTag_Tag" FromRole="Tag" ToRole="CustomTag" />
+          <NavigationProperty Name="DisasterTags" Relationship="Self.FK_DisasterTag_Tag" FromRole="Tag" ToRole="DisasterTag" />
+          <NavigationProperty Name="DiseaseTags" Relationship="Self.FK_DiseaseTag_Tag" FromRole="Tag" ToRole="DiseaseTag" />
+          <NavigationProperty Name="FestivalTags" Relationship="Self.FK_FestivalTag_Tag" FromRole="Tag" ToRole="FestivalTag" />
+          <NavigationProperty Name="HospitalTags" Relationship="Self.FK_HospitalTag_Tag" FromRole="Tag" ToRole="HospitalTag" />
+          <NavigationProperty Name="MissingTags" Relationship="Self.FK_MissingTag_Tag" FromRole="Tag" ToRole="MissingTag" />
+          <NavigationProperty Name="ReligionTags" Relationship="Self.FK_ReligionTag_Tag" FromRole="Tag" ToRole="ReligionTag" />
+          <NavigationProperty Name="SensitivityTags" Relationship="Self.FK_SensitivityTag_Tag" FromRole="Tag" ToRole="SensitivityTag" />
+          <NavigationProperty Name="TagType" Relationship="Self.FK_Tag_TagType" FromRole="Tag" ToRole="TagType" />
+          <NavigationProperty Name="WantedTags" Relationship="Self.FK_WantedTag_Tag" FromRole="Tag" ToRole="WantedTag" />
+        </EntityType>
+        <EntityType Name="TagType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tags" Relationship="Self.FK_Tag_TagType" FromRole="TagType" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="TreatingHospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DiseaseId" Type="Guid" Nullable="false" />
+          <Property Name="HospitalId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Disease" Relationship="Self.FK_TreatingHospital_Disease" FromRole="TreatingHospital" ToRole="Disease" />
+          <NavigationProperty Name="Hospital" Relationship="Self.FK_TreatingHospital_Hospital" FromRole="TreatingHospital" ToRole="Hospital" />
+        </EntityType>
+        <EntityType Name="Wanted">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Media" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrgUserId" Type="Guid" Nullable="false" />
+          <Property Name="IsArrested" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="WantedFrom" Type="Geography" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrgUser" Relationship="Self.FK_Wanted_OrgUser" FromRole="Wanted" ToRole="OrgUser" />
+          <NavigationProperty Name="WantedTags" Relationship="Self.FK_WantedTag_Wanted" FromRole="Wanted" ToRole="WantedTag" />
+        </EntityType>
+        <EntityType Name="WantedTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WantedId" Type="Guid" Nullable="false" />
+          <Property Name="TagId" Type="Guid" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_WantedTag_Tag" FromRole="WantedTag" ToRole="Tag" />
+          <NavigationProperty Name="Wanted" Relationship="Self.FK_WantedTag_Wanted" FromRole="WantedTag" ToRole="Wanted" />
+        </EntityType>
+        <Association Name="FK_OrgUser_AppUser">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgUser">
+              <PropertyRef Name="AppUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Area_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attire_Religion">
+          <End Role="Religion" Type="Self.Religion" Multiplicity="1" />
+          <End Role="Attire" Type="Self.Attire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Attire">
+              <PropertyRef Name="ReligionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AttireTag_Attire">
+          <End Role="Attire" Type="Self.Attire" Multiplicity="1" />
+          <End Role="AttireTag" Type="Self.AttireTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AttireTag">
+              <PropertyRef Name="AttireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AttireTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="AttireTag" Type="Self.AttireTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AttireTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blood_OrgUser">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="Blood" Type="Self.Blood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Blood">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_State">
+          <End Role="State" Type="Self.State" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Congestion_CongestionType">
+          <End Role="CongestionType" Type="Self.CongestionType" Multiplicity="1" />
+          <End Role="Congestion" Type="Self.Congestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongestionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Congestion">
+              <PropertyRef Name="CongestionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Congestion_OrgUser">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="Congestion" Type="Self.Congestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Congestion">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CongestionTag_Congestion">
+          <End Role="Congestion" Type="Self.Congestion" Multiplicity="1" />
+          <End Role="CongestionTag" Type="Self.CongestionTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Congestion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CongestionTag">
+              <PropertyRef Name="CongestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CongestionTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="CongestionTag" Type="Self.CongestionTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CongestionTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Custom_Religion">
+          <End Role="Religion" Type="Self.Religion" Multiplicity="1" />
+          <End Role="Custom" Type="Self.Custom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Custom">
+              <PropertyRef Name="ReligionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomTag_Custom">
+          <End Role="Custom" Type="Self.Custom" Multiplicity="1" />
+          <End Role="CustomTag" Type="Self.CustomTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Custom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomTag">
+              <PropertyRef Name="CustomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="CustomTag" Type="Self.CustomTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disaster_DisasterType">
+          <End Role="DisasterType" Type="Self.DisasterType" Multiplicity="1" />
+          <End Role="Disaster" Type="Self.Disaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DisasterType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Disaster">
+              <PropertyRef Name="DisasterTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disaster_OrgUser">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="Disaster" Type="Self.Disaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Disaster">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DisasterTag_Disaster">
+          <End Role="Disaster" Type="Self.Disaster" Multiplicity="1" />
+          <End Role="DisasterTag" Type="Self.DisasterTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DisasterTag">
+              <PropertyRef Name="DisasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DisasterTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="DisasterTag" Type="Self.DisasterTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DisasterTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SurvivalGuide_DisasterType">
+          <End Role="DisasterType" Type="Self.DisasterType" Multiplicity="1" />
+          <End Role="SurvivalGuide" Type="Self.SurvivalGuide" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DisasterType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SurvivalGuide">
+              <PropertyRef Name="DisasterTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disease_OrgUser">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="0..1" />
+          <End Role="Disease" Type="Self.Disease" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Disease">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiseaseTag_Disease">
+          <End Role="Disease" Type="Self.Disease" Multiplicity="1" />
+          <End Role="DiseaseTag" Type="Self.DiseaseTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disease">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DiseaseTag">
+              <PropertyRef Name="DiseaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreatingHospital_Disease">
+          <End Role="Disease" Type="Self.Disease" Multiplicity="1" />
+          <End Role="TreatingHospital" Type="Self.TreatingHospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disease">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TreatingHospital">
+              <PropertyRef Name="DiseaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiseaseTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="DiseaseTag" Type="Self.DiseaseTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DiseaseTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Festival_Religion">
+          <End Role="Religion" Type="Self.Religion" Multiplicity="1" />
+          <End Role="Festival" Type="Self.Festival" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Festival">
+              <PropertyRef Name="ReligionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FestivalTag_Festival">
+          <End Role="Festival" Type="Self.Festival" Multiplicity="1" />
+          <End Role="FestivalTag" Type="Self.FestivalTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Festival">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FestivalTag">
+              <PropertyRef Name="FestivalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FestivalTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="FestivalTag" Type="Self.FestivalTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FestivalTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HospitalTag_Hospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="1" />
+          <End Role="HospitalTag" Type="Self.HospitalTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HospitalTag">
+              <PropertyRef Name="HospitalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreatingHospital_Hospital">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="1" />
+          <End Role="TreatingHospital" Type="Self.TreatingHospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TreatingHospital">
+              <PropertyRef Name="HospitalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HospitalTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="HospitalTag" Type="Self.HospitalTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HospitalTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Missing_MissingType">
+          <End Role="MissingType" Type="Self.MissingType" Multiplicity="1" />
+          <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MissingType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Missing">
+              <PropertyRef Name="MissingTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Missing_OrgUser">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Missing">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MissingTag_Missing">
+          <End Role="Missing" Type="Self.Missing" Multiplicity="1" />
+          <End Role="MissingTag" Type="Self.MissingTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Missing">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MissingTag">
+              <PropertyRef Name="MissingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MissingTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="MissingTag" Type="Self.MissingTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MissingTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Org_OrgType">
+          <End Role="OrgType" Type="Self.OrgType" Multiplicity="1" />
+          <End Role="Org" Type="Self.Org" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Org">
+              <PropertyRef Name="OrgTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrgUser_Org">
+          <End Role="Org" Type="Self.Org" Multiplicity="1" />
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Org">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrgUser">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wanted_OrgUser">
+          <End Role="OrgUser" Type="Self.OrgUser" Multiplicity="1" />
+          <End Role="Wanted" Type="Self.Wanted" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wanted">
+              <PropertyRef Name="OrgUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReligionTag_Religion">
+          <End Role="Religion" Type="Self.Religion" Multiplicity="1" />
+          <End Role="ReligionTag" Type="Self.ReligionTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReligionTag">
+              <PropertyRef Name="ReligionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sensitivity_Religion">
+          <End Role="Religion" Type="Self.Religion" Multiplicity="1" />
+          <End Role="Sensitivity" Type="Self.Sensitivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Religion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sensitivity">
+              <PropertyRef Name="ReligionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReligionTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="ReligionTag" Type="Self.ReligionTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReligionTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Report_ReportType">
+          <End Role="ReportType" Type="Self.ReportType" Multiplicity="1" />
+          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="ReportType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensitivityTag_Sensitivity">
+          <End Role="Sensitivity" Type="Self.Sensitivity" Multiplicity="1" />
+          <End Role="SensitivityTag" Type="Self.SensitivityTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensitivity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SensitivityTag">
+              <PropertyRef Name="SensitivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensitivityTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="SensitivityTag" Type="Self.SensitivityTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SensitivityTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tag_TagType">
+          <End Role="TagType" Type="Self.TagType" Multiplicity="1" />
+          <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tag">
+              <PropertyRef Name="TagTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WantedTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="WantedTag" Type="Self.WantedTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WantedTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WantedTag_Wanted">
+          <End Role="Wanted" Type="Self.Wanted" Multiplicity="1" />
+          <End Role="WantedTag" Type="Self.WantedTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wanted">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WantedTag">
+              <PropertyRef Name="WantedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YouKnowEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AppUsers" EntityType="Self.AppUser" />
+          <EntitySet Name="Areas" EntityType="Self.Area" />
+          <EntitySet Name="Attires" EntityType="Self.Attire" />
+          <EntitySet Name="AttireTags" EntityType="Self.AttireTag" />
+          <EntitySet Name="Bloods" EntityType="Self.Blood" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Congestions" EntityType="Self.Congestion" />
+          <EntitySet Name="CongestionTags" EntityType="Self.CongestionTag" />
+          <EntitySet Name="CongestionTypes" EntityType="Self.CongestionType" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Customs" EntityType="Self.Custom" />
+          <EntitySet Name="CustomTags" EntityType="Self.CustomTag" />
+          <EntitySet Name="Devices" EntityType="Self.Device" />
+          <EntitySet Name="Disasters" EntityType="Self.Disaster" />
+          <EntitySet Name="DisasterTags" EntityType="Self.DisasterTag" />
+          <EntitySet Name="DisasterTypes" EntityType="Self.DisasterType" />
+          <EntitySet Name="Diseases" EntityType="Self.Disease" />
+          <EntitySet Name="DiseaseTags" EntityType="Self.DiseaseTag" />
+          <EntitySet Name="Festivals" EntityType="Self.Festival" />
+          <EntitySet Name="FestivalTags" EntityType="Self.FestivalTag" />
+          <EntitySet Name="Geos" EntityType="Self.Geo" />
+          <EntitySet Name="Hospitals" EntityType="Self.Hospital" />
+          <EntitySet Name="HospitalTags" EntityType="Self.HospitalTag" />
+          <EntitySet Name="Missings" EntityType="Self.Missing" />
+          <EntitySet Name="MissingTags" EntityType="Self.MissingTag" />
+          <EntitySet Name="MissingTypes" EntityType="Self.MissingType" />
+          <EntitySet Name="Orgs" EntityType="Self.Org" />
+          <EntitySet Name="OrgTypes" EntityType="Self.OrgType" />
+          <EntitySet Name="OrgUsers" EntityType="Self.OrgUser" />
+          <EntitySet Name="Religions" EntityType="Self.Religion" />
+          <EntitySet Name="ReligionTags" EntityType="Self.ReligionTag" />
+          <EntitySet Name="Reports" EntityType="Self.Report" />
+          <EntitySet Name="ReportTypes" EntityType="Self.ReportType" />
+          <EntitySet Name="Sensitivities" EntityType="Self.Sensitivity" />
+          <EntitySet Name="SensitivityTags" EntityType="Self.SensitivityTag" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="SurvivalGuides" EntityType="Self.SurvivalGuide" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tags" EntityType="Self.Tag" />
+          <EntitySet Name="TagTypes" EntityType="Self.TagType" />
+          <EntitySet Name="TreatingHospitals" EntityType="Self.TreatingHospital" />
+          <EntitySet Name="Wanteds" EntityType="Self.Wanted" />
+          <EntitySet Name="WantedTags" EntityType="Self.WantedTag" />
+          <AssociationSet Name="FK_OrgUser_AppUser" Association="Self.FK_OrgUser_AppUser">
+            <End Role="AppUser" EntitySet="AppUsers" />
+            <End Role="OrgUser" EntitySet="OrgUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Area_City" Association="Self.FK_Area_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Area" EntitySet="Areas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attire_Religion" Association="Self.FK_Attire_Religion">
+            <End Role="Religion" EntitySet="Religions" />
+            <End Role="Attire" EntitySet="Attires" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AttireTag_Attire" Association="Self.FK_AttireTag_Attire">
+            <End Role="Attire" EntitySet="Attires" />
+            <End Role="AttireTag" EntitySet="AttireTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AttireTag_Tag" Association="Self.FK_AttireTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="AttireTag" EntitySet="AttireTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blood_OrgUser" Association="Self.FK_Blood_OrgUser">
+            <End Role="OrgUser" EntitySet="OrgUsers" />
+            <End Role="Blood" EntitySet="Bloods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Congestion_CongestionType" Association="Self.FK_Congestion_CongestionType">
+            <End Role="CongestionType" EntitySet="CongestionTypes" />
+            <End Role="Congestion" EntitySet="Congestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Congestion_OrgUser" Association="Self.FK_Congestion_OrgUser">
+            <End Role="OrgUser" EntitySet="OrgUsers" />
+            <End Role="Congestion" EntitySet="Congestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CongestionTag_Congestion" Association="Self.FK_CongestionTag_Congestion">
+            <End Role="Congestion" EntitySet="Congestions" />
+            <End Role="CongestionTag" EntitySet="CongestionTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CongestionTag_Tag" Association="Self.FK_CongestionTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="CongestionTag" EntitySet="CongestionTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="State" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Custom_Religion" Association="Self.FK_Custom_Religion">
+            <End Role="Religion" EntitySet="Religions" />
+            <End Role="Custom" EntitySet="Customs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomTag_Custom" Association="Self.FK_CustomTag_Custom">
+            <End Role="Custom" EntitySet="Customs" />
+            <End Role="CustomTag" EntitySet="CustomTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomTag_Tag" Association="Self.FK_CustomTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="CustomTag" EntitySet="CustomTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disaster_DisasterType" Association="Self.FK_Disaster_DisasterType">
+            <End Role="DisasterType" EntitySet="DisasterTypes" />
+            <End Role="Disaster" EntitySet="Disasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disaster_OrgUser" Association="Self.FK_Disaster_OrgUser">
+            <End Role="OrgUser" EntitySet="OrgUsers" />
+            <End Role="Disaster" EntitySet="Disasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DisasterTag_Disaster" Association="Self.FK_DisasterTag_Disaster">
+            <End Role="Disaster" EntitySet="Disasters" />
+            <End Role="DisasterTag" EntitySet="DisasterTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DisasterTag_Tag" Association="Self.FK_DisasterTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="DisasterTag" EntitySet="DisasterTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SurvivalGuide_DisasterType" Association="Self.FK_SurvivalGuide_DisasterType">
+            <End Role="DisasterType" EntitySet="DisasterTypes" />
+            <End Role="SurvivalGuide" EntitySet="SurvivalGuides" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disease_OrgUser" Association="Self.FK_Disease_OrgUser">
+            <End Role="OrgUser" EntitySet="OrgUsers" />
+            <End Role="Disease" EntitySet="Diseases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiseaseTag_Disease" Association="Self.FK_DiseaseTag_Disease">
+            <End Role="Disease" EntitySet="Diseases" />
+            <End Role="DiseaseTag" EntitySet="DiseaseTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreatingHospital_Disease" Association="Self.FK_TreatingHospital_Disease">
+            <End Role="Disease" EntitySet="Diseases" />
+            <End Role="TreatingHospital" EntitySet="TreatingHospitals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiseaseTag_Tag" Association="Self.FK_DiseaseTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="DiseaseTag" EntitySet="DiseaseTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Festival_Religion" Association="Self.FK_Festival_Religion">
+            <End Role="Religion" EntitySet="Religions" />
+            <End Role="Festival" EntitySet="Festivals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FestivalTag_Festival" Association="Self.FK_FestivalTag_Festival">
+            <End Role="Festival" EntitySet="Festivals" />
+            <End Role="FestivalTag" EntitySet="FestivalTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FestivalTag_Tag" Association="Self.FK_FestivalTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="FestivalTag" EntitySet="FestivalTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HospitalTag_Hospital" Association="Self.FK_HospitalTag_Hospital">
+            <End Role="Hospital" EntitySet="Hospitals" />
+            <End Role="HospitalTag" EntitySet="HospitalTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreatingHospital_Hospital" Association="Self.FK_TreatingHospital_Hospital">
+            <End Role="Hospital" EntitySet="Hospitals" />
+            <End Role="TreatingHospital" EntitySet="TreatingHospitals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HospitalTag_Tag" Association="Self.FK_HospitalTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="HospitalTag" EntitySet="HospitalTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Missing_MissingType" Association="Self.FK_Missing_MissingType">
+            <End Role="MissingType" EntitySet="MissingTypes" />
+            <End Role="Missing" EntitySet="Missings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Missing_OrgUser" Association="Self.FK_Missing_OrgUser">
+            <End Role="OrgUser" EntitySet="OrgUsers" />
+            <End Role="Missing" EntitySet="Missings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MissingTag_Missing" Association="Self.FK_MissingTag_Missing">
+            <End Role="Missing" EntitySet="Missings" />
+            <End Role="MissingTag" EntitySet="MissingTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MissingTag_Tag" Association="Self.FK_MissingTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="MissingTag" EntitySet="MissingTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Org_OrgType" Association="Self.FK_Org_OrgType">
+            <End Role="OrgType" EntitySet="OrgTypes" />
+            <End Role="Org" EntitySet="Orgs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrgUser_Org" Association="Self.FK_OrgUser_Org">
+            <End Role="Org" EntitySet="Orgs" />
+            <End Role="OrgUser" EntitySet="OrgUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wanted_OrgUser" Association="Self.FK_Wanted_OrgUser">
+            <End Role="OrgUser" EntitySet="OrgUsers" />
+            <End Role="Wanted" EntitySet="Wanteds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReligionTag_Religion" Association="Self.FK_ReligionTag_Religion">
+            <End Role="Religion" EntitySet="Religions" />
+            <End Role="ReligionTag" EntitySet="ReligionTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sensitivity_Religion" Association="Self.FK_Sensitivity_Religion">
+            <End Role="Religion" EntitySet="Religions" />
+            <End Role="Sensitivity" EntitySet="Sensitivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReligionTag_Tag" Association="Self.FK_ReligionTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="ReligionTag" EntitySet="ReligionTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_ReportType" Association="Self.FK_Report_ReportType">
+            <End Role="ReportType" EntitySet="ReportTypes" />
+            <End Role="Report" EntitySet="Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensitivityTag_Sensitivity" Association="Self.FK_SensitivityTag_Sensitivity">
+            <End Role="Sensitivity" EntitySet="Sensitivities" />
+            <End Role="SensitivityTag" EntitySet="SensitivityTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensitivityTag_Tag" Association="Self.FK_SensitivityTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="SensitivityTag" EntitySet="SensitivityTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tag_TagType" Association="Self.FK_Tag_TagType">
+            <End Role="TagType" EntitySet="TagTypes" />
+            <End Role="Tag" EntitySet="Tags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WantedTag_Tag" Association="Self.FK_WantedTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="WantedTag" EntitySet="WantedTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WantedTag_Wanted" Association="Self.FK_WantedTag_Wanted">
+            <End Role="Wanted" EntitySet="Wanteds" />
+            <End Role="WantedTag" EntitySet="WantedTags" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YouKnowModelStoreContainer" CdmEntityContainer="YouKnowEntities">
+          <EntitySetMapping Name="AppUsers">
+            <EntityTypeMapping TypeName="YouKnowModel.AppUser">
+              <MappingFragment StoreEntitySet="AppUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsAuthorized" ColumnName="IsAuthorized" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="YouKnowModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attires">
+            <EntityTypeMapping TypeName="YouKnowModel.Attire">
+              <MappingFragment StoreEntitySet="Attire">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AttireTags">
+            <EntityTypeMapping TypeName="YouKnowModel.AttireTag">
+              <MappingFragment StoreEntitySet="AttireTag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AttireId" ColumnName="AttireId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bloods">
+            <EntityTypeMapping TypeName="YouKnowModel.Blood">
+              <MappingFragment StoreEntitySet="Blood">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OrgUserId" ColumnName="OrgUserId" />
+                <ScalarProperty Name="IsFulfilled" ColumnName="IsFulfilled" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="WantedFrom" ColumnName="WantedFrom" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="YouKnowModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Congestions">
+            <EntityTypeMapping TypeName="YouKnowModel.Congestion">
+              <MappingFragment StoreEntitySet="Congestion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CongestionTypeId" ColumnName="CongestionTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OrgUserId" ColumnName="OrgUserId" />
+                <ScalarProperty Name="IsLifted" ColumnName="IsLifted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CongestionTags">
+            <EntityTypeMapping TypeName="YouKnowModel.CongestionTag">
+              <MappingFragment StoreEntitySet="CongestionTag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CongestionId" ColumnName="CongestionId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CongestionTypes">
+            <EntityTypeMapping TypeName="YouKnowModel.CongestionType">
+              <MappingFragment StoreEntitySet="CongestionType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="YouKnowModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customs">
+            <EntityTypeMapping TypeName="YouKnowModel.Custom">
+              <MappingFragment StoreEntitySet="Custom">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomTags">
+            <EntityTypeMapping TypeName="YouKnowModel.CustomTag">
+              <MappingFragment StoreEntitySet="CustomTag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomId" ColumnName="CustomId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Devices">
+            <EntityTypeMapping TypeName="YouKnowModel.Device">
+              <MappingFragment StoreEntitySet="Device">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="CanVolunteer" ColumnName="CanVolunteer" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="CanDonate" ColumnName="CanDonate" />
+                <ScalarProperty Name="EmergencyContact" ColumnName="EmergencyContact" />
+                <ScalarProperty Name="LastLocation" ColumnName="LastLocation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disasters">
+            <EntityTypeMapping TypeName="YouKnowModel.Disaster">
+              <MappingFragment StoreEntitySet="Disaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DisasterTypeId" ColumnName="DisasterTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OrgUserId" ColumnName="OrgUserId" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="MissingFrom" ColumnName="MissingFrom" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DisasterTags">
+            <EntityTypeMapping TypeName="YouKnowModel.DisasterTag">
+              <MappingFragment StoreEntitySet="DisasterTag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DisasterId" ColumnName="DisasterId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DisasterTypes">
+            <EntityTypeMapping TypeName="YouKnowModel.DisasterType">
+              <MappingFragment StoreEntitySet="DisasterType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Radius" ColumnName="Radius" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diseases">
+            <EntityTypeMapping TypeName="YouKnowModel.Disease">
+              <MappingFragment StoreEntitySet="Disease">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OrgUserId" ColumnName="OrgUserId" />
+                <ScalarProperty Name="FirstIdentifiedOn" ColumnName="FirstIdentifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="GroundZero" ColumnName="GroundZero" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="KeyFacts" ColumnName="KeyFacts" />
+                <ScalarProperty Name="Outbreaks" ColumnName="Outbreaks" />
+                <ScalarProperty Name="Transmission" ColumnName="Transmission" />
+                <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
+                <ScalarProperty Name="Diagnosis" ColumnName="Diagnosis" />
+                <ScalarProperty Name="Treatment" ColumnName="Treatment" />
+                <ScalarProperty Name="Prevention" ColumnName="Prevention" />
+                <ScalarProperty Name="ConfirmedCases" ColumnName="ConfirmedCases" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiseaseTags">
+            <EntityTypeMapping TypeName="YouKnowModel.DiseaseTag">
+              <MappingFragment StoreEntitySet="DiseaseTag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DiseaseId" ColumnName="DiseaseId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Festivals">
+            <EntityTypeMapping TypeName="YouKnowModel.Festival">
+              <MappingFragment StoreEntitySet="Festival">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FestivalTags">
+            <EntityTypeMapping TypeName="YouKnowModel.FestivalTag">
+              <MappingFragment StoreEntitySet="FestivalTag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FestivalId" ColumnName="FestivalId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geos">
+            <EntityTypeMapping TypeName="YouKnowModel.Geo">
+              <MappingFragment StoreEntitySet="Geo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hospitals">
+            <EntityTypeMapping TypeName="YouKnowModel.Hospital">
+              <MappingFragment StoreEntitySet="Hospital">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OrgUserId" ColumnName="OrgUserId" />
+                <ScalarProperty Name="HasReturned" ColumnName="HasReturned" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HospitalTags">
+            <EntityTypeMapping TypeName="YouKnowModel.HospitalTag">
+              <MappingFragment StoreEntitySet="HospitalTag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HospitalId" ColumnName="HospitalId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Missings">
+            <EntityTypeMapping TypeName="YouKnowModel.Missing">
+              <MappingFragment StoreEntitySet="Missing">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MissingTypeId" ColumnName="MissingTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OrgUserId" ColumnName="OrgUserId" />
+                <ScalarProperty Name="HasReturned" ColumnName="HasReturned" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="MissingFrom" ColumnName="MissingFrom" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MissingTags">
+            <EntityTypeMapping TypeName="YouKnowModel.MissingTag">
+              <MappingFragment StoreEntitySet="MissingTag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MissingId" ColumnName="MissingId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MissingTypes">
+            <EntityTypeMapping TypeName="YouKnowModel.MissingType">
+              <MappingFragment StoreEntitySet="MissingType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orgs">
+            <EntityTypeMapping TypeName="YouKnowModel.Org">
+              <MappingFragment StoreEntitySet="Org">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrgTypeId" ColumnName="OrgTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="Jurisidiction" ColumnName="Jurisidiction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgTypes">
+            <EntityTypeMapping TypeName="YouKnowModel.OrgType">
+              <MappingFragment StoreEntitySet="OrgType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgUsers">
+            <EntityTypeMapping TypeName="YouKnowModel.OrgUser">
+              <MappingFragment StoreEntitySet="OrgUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AppUserId" ColumnName="AppUserId" />
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsAuthorized" ColumnName="IsAuthorized" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Religions">
+            <EntityTypeMapping TypeName="YouKnowModel.Religion">
+              <MappingFragment StoreEntitySet="Religion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="God" ColumnName="God" />
+                <ScalarProperty Name="Greetings" ColumnName="Greetings" />
+                <ScalarProperty Name="Followers" ColumnName="Followers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReligionTags">
+            <EntityTypeMapping TypeName="YouKnowModel.ReligionTag">
+              <MappingFragment StoreEntitySet="ReligionTag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="YouKnowModel.Report">
+              <MappingFragment StoreEntitySet="Report">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReportType" ColumnName="ReportType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="HasReturned" ColumnName="HasReturned" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="MissingFrom" ColumnName="MissingFrom" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportTypes">
+            <EntityTypeMapping TypeName="YouKnowModel.ReportType">
+              <MappingFragment StoreEntitySet="ReportType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sensitivities">
+            <EntityTypeMapping TypeName="YouKnowModel.Sensitivity">
+              <MappingFragment StoreEntitySet="Sensitivity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SensitivityTags">
+            <EntityTypeMapping TypeName="YouKnowModel.SensitivityTag">
+              <MappingFragment StoreEntitySet="SensitivityTag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SensitivityId" ColumnName="SensitivityId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="YouKnowModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="Languages" ColumnName="Languages" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ImportantCities" ColumnName="ImportantCities" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SurvivalGuides">
+            <EntityTypeMapping TypeName="YouKnowModel.SurvivalGuide">
+              <MappingFragment StoreEntitySet="SurvivalGuide">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DisasterTypeId" ColumnName="DisasterTypeId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="YouKnowModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="YouKnowModel.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TagTypeId" ColumnName="TagTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TagTypes">
+            <EntityTypeMapping TypeName="YouKnowModel.TagType">
+              <MappingFragment StoreEntitySet="TagType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TreatingHospitals">
+            <EntityTypeMapping TypeName="YouKnowModel.TreatingHospital">
+              <MappingFragment StoreEntitySet="TreatingHospital">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DiseaseId" ColumnName="DiseaseId" />
+                <ScalarProperty Name="HospitalId" ColumnName="HospitalId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wanteds">
+            <EntityTypeMapping TypeName="YouKnowModel.Wanted">
+              <MappingFragment StoreEntitySet="Wanted">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OrgUserId" ColumnName="OrgUserId" />
+                <ScalarProperty Name="IsArrested" ColumnName="IsArrested" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="WantedFrom" ColumnName="WantedFrom" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WantedTags">
+            <EntityTypeMapping TypeName="YouKnowModel.WantedTag">
+              <MappingFragment StoreEntitySet="WantedTag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WantedId" ColumnName="WantedId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
